@@ -6,8 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import patel.s.banking.DTO.Admin;
@@ -26,11 +24,6 @@ public class PublicController {
         this.authenticationManager=authenticationManager;
         this.jwtUtility=jwtUtility;
         this.myUserDetailsService=myUserDetailsService;
-    }
-    @GetMapping
-    public String pass(){
-        PasswordEncoder en=new BCryptPasswordEncoder();
-        return en.encode("Abhi@123");
     }
    @PostMapping("/login")
     public ResponseEntity<String> login(@Valid @RequestBody Admin admin){
